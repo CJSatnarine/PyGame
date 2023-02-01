@@ -1,0 +1,1 @@
+This is an assignment for Computer Engineering class where I learn to create a game using PyGame with barely any experience with the Python programming language. 
