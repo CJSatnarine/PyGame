@@ -19,18 +19,38 @@ clock = pygame.time.Clock(); #Is used to control how fast the screen updates.
 #Colour variables. 
 black = (0, 0, 0);
 white = (255, 255, 255);
-green = (0, 255, 0);
 red = (255, 0, 0);
 blue = (0, 0, 255);
+yellow = (255, 255, 0);
+green = (0, 255, 0);
+orange = (255, 102, 0);
 purple = (123, 50, 150);
 
 # Player Variables. 
-playerWidth = 40;
-playerHeight = 40;
+playerWidth = 20;
+playerHeight = 20;
 playerXLocation = (windowHeight / 2) - playerHeight;
 playerYLocation = (windowWidth / 2) - playerWidth;
 playerSpeed = 5;
 player = pygame.Rect(playerXLocation, playerYLocation, playerWidth, playerHeight);
+
+#Colour-rects variables.
+rectWidth = 40;
+rectHeight = 40;
+
+leftRectXLocation = 40;
+leftRectYLocation = 40;
+
+rightRectXLocation = 320;
+rightRectYLocation = leftRectYLocation;
+
+#Colour-rects
+blueRect = pygame.Rect(leftRectXLocation, leftRectYLocation, rectWidth, rectHeight);
+purpleRect = pygame.Rect(leftRectXLocation, leftRectYLocation + 120, rectWidth, rectHeight);
+redRect = pygame.Rect(leftRectXLocation, leftRectYLocation + 240, rectWidth, rectHeight);
+greenRect = pygame.Rect(rightRectXLocation, rightRectYLocation, rectWidth, rectHeight);
+yellowRect = pygame.Rect(rightRectXLocation, rightRectYLocation + 120, rectWidth, rectHeight);
+orangeRect = pygame.Rect(rightRectXLocation, rightRectYLocation + 240, rectWidth, rectHeight);
 
 #Loop.
 while runGame:
@@ -61,7 +81,34 @@ while runGame:
     window.fill(black);
 
     #Drawing stuff. 
-    pygame.draw.rect(window, purple, player);
+    pygame.draw.rect(window, red, redRect);
+    pygame.draw.rect(window, blue, blueRect);
+    pygame.draw.rect(window, yellow, yellowRect);
+    pygame.draw.rect(window, purple, purpleRect);
+    pygame.draw.rect(window, orange, orangeRect);
+    pygame.draw.rect(window, green, greenRect);
+
+    #Default player sprite. 
+    pygame.draw.rect(window, white, player);
+
+    #Updating the player colour if it overlaps a coloured rectangle. 
+    if player.colliderect(blueRect):
+        pygame.draw.rect(window, blue, player);
+
+    if player.colliderect(purpleRect):
+        pygame.draw.rect(window, purple, player);
+
+    if player.colliderect(redRect):
+        pygame.draw.rect(window, red, player);
+
+    if player.colliderect(greenRect):
+        pygame.draw.rect(window, green, player);
+
+    if player.colliderect(yellowRect):
+        pygame.draw.rect(window, yellow, player);
+
+    if player.colliderect(orangeRect):
+        pygame.draw.rect(window, orange, player);
 
     #Updates the screen with what is drawn. 
     pygame.display.flip();
