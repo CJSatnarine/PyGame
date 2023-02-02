@@ -24,6 +24,12 @@ red = (255, 0, 0);
 blue = (0, 0, 255);
 purple = (123, 50, 150);
 
+# Player Variables. 
+playerXLocation = 0;
+playerYLocation = 0;
+playerWidth = 10;
+playerHeight = 10;
+player = pygame.Rect(playerXLocation, playerYLocation, playerWidth, playerHeight);
 
 #Loop.
 while runGame:
@@ -35,11 +41,9 @@ while runGame:
     #Clears the screen to black. 
     window.fill(black);
 
-    #Drawing different shapes and lines. 
-    pygame.draw.rect(window, purple, [55, 200, 100, 70], 0);
-    pygame.draw.line(window, red, [0, 0], [100, 100], 5);
-    pygame.draw.ellipse(window, white, [20,20,250,100], 2);
-
+    #Drawing stuff. 
+    pygame.draw.rect(window, purple, player);
+    
 
 
     #Updates the screen with what is drawn. 
