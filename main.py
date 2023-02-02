@@ -41,7 +41,7 @@ while runGame:
     #Key Handling. 
     keys = pygame.key.get_pressed()
 
-    #Player Movement based on arrow keys. 
+    #Player Movement based on WASD movement seen in most games. 
     if keys[pygame.K_w]:
         player.y -= playerSpeed;
     
