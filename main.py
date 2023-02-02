@@ -1,6 +1,6 @@
 #Imports.
 import pygame;
-import sys;
+import random;
 
 #Initialisation and set up. 
 pygame.init();
@@ -10,6 +10,7 @@ windowHeight = 400;
 windowWidth = 400;
 window = pygame.display.set_mode((windowHeight, windowWidth));
 pygame.display.set_caption('PyGame');
+windowBorder = window.get_rect();
 
 #Program loop.
 runGame = True;
@@ -24,10 +25,10 @@ blue = (0, 0, 255);
 purple = (123, 50, 150);
 
 # Player Variables. 
-playerXLocation = 0;
-playerYLocation = 0;
-playerWidth = 20;
-playerHeight = 20;
+playerWidth = 40;
+playerHeight = 40;
+playerXLocation = (windowHeight / 2) - playerHeight;
+playerYLocation = (windowWidth / 2) - playerWidth;
 playerSpeed = 5;
 player = pygame.Rect(playerXLocation, playerYLocation, playerWidth, playerHeight);
 
@@ -53,7 +54,9 @@ while runGame:
     if keys[pygame.K_d]:
         player.x += playerSpeed;
 
-    #Drawing code. 
+    #Keeps the player within the screen. 
+    player.clamp_ip(windowBorder);
+
     #Clears the screen to black. 
     window.fill(black);
 
