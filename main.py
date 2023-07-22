@@ -1,6 +1,5 @@
 #Imports.
 import pygame;
-import random;
 
 #Initialisation and set up. 
 pygame.init();
